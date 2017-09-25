@@ -1,0 +1,58 @@
+Skrevet i javascript.
+
+var weight;
+var height;
+var result;
+
+weight = 80 ;
+height = 1.90 ;
+result = weight/(height*height) ;
+
+console.log(result);
+
+_____________________________________________________________________
+
+
+Sjov med javacript
+Billede ligger på skrivebord
+
+
+_____________________________________________________________________
+
+1) Lav en funktion der kan beregne BMI
+(https://da.wikipedia.org/wiki/Body_Mass_Index) funktion skal tage to input-parametre (vægt og højde) og returnere ens BMI-tal
+
+2) Skriv ovenstående funktion om så den kun tager et input i form af et objekt: {weight: 80, height: 1.86}
+
+3) Ud fra følgende streng ”javascriptmed sjov ” 
+lav tekststrengen ”sjov med javascript” ved at bruge substring() metoden. Lav derefter den nye streng til upper-case 
+
+4) Lav en funktion der tager input-parameteren: "guess" 
+som skal  være et tal imellem 1 og 5. 
+I funktionen genereres et ramdom heltal imellem 1 og 5, 
+hvis dette tal er dette samme som det argument der er givet med til funktion (input-parameteren)
+returneres true ellers returneres false
+
+5) Lav en objekt-model over en bar. Baren skal laves med en constructor-funktion og have mindst to properties (vælg selv). Opret to bar-objekter og tilføj dem til et array. Skriv et af bar-objekterne fra arrayet ud i en tabel i HTML-dokumentet (opret først et tabel-element og giv det et id. brug document.getElementById() til at få fat i elementet i javascript og brug da innerHTML for at tilføje data til tabellen).
+
+6) Lav en objekt-model af et kursus og en studerende, begge skal laves med en constructor-funktion så man kan lave flere instanser.
+
+Kursus (Course)
+
+Skal have følgende properties: navn, underviser og studerende
+Konstruktøren skal tage to parametre: navn og underviser
+Der skal være en metode så man kan tilføje studerende til kurset. Metoden tager et studerende objekt som parameter
+Der skal være en metode der returnerer hvor mange personer der følger kurset
+
+Studerende (Student)
+
+Skal have følgende properties: navn, årskortnummer
+Konstruktøren skal tage to parametre: navn og årskortnummer
+Lav en test som viser at jeres kode virker:
+
+Opret et nyt kursus
+Tilføj 3 studerende til kurset
+Skriv ud til konsollen hvor mange studerende der følger kurset, ved at bruge kursets metode der svarer på dette (skulle gerne være 3)
+
+Aflevering:
+Udskrift af jeres kode inkl. kommentarer (husk at skrive navn, årskortnummer og opgavenummer på)
