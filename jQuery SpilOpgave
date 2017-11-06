@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script   src="https://code.jquery.com/jquery-3.2.1.js"   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<title>DOM-manipulation og events</title>
+<style type="text/css">
+	#container {
+		margin: auto;
+		padding: 20px;
+		width: 720px;
+	}
+	
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin-bottom: 20px;
+	}
+	
+	th {
+		text-align: left;
+	}
+
+	td, th {
+		padding: 5px;
+	}
+	
+	tr {
+		border-bottom: 1px solid #4dd18b;
+	}
+	
+	tr:last-child {
+		border-bottom-width: 0px;
+	}
+	
+	tr.highlight {
+		background-color: #337ab7;
+		color: #eeeeee;
+	}
+	
+	tr.highlight2 {
+		background-color: #ddd;
+	}
+	
+	
+.btn {
+    -moz-user-select: none;
+    background-image: none;
+    border: 1px solid #999;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;   
+}
+
+
+.btn:hover {
+	background-color: #ddd;
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+a:hover {
+	color:23527c;
+}
+
+.game-of-the-moment {
+	font-size: 40px;
+}
+#moment_title {
+	color: black;
+}
+
+#moment_genre {
+	color: black;
+}
+
+#moment_year {
+	color: blacki;
+}
+
+h1 {
+	font-size: 32px;
+}
+
+h2 {
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+	
+</style>
+</head>
+<body>
+
+<div id="container">
+	<h1>De bedste spil</h1>
+	
+	<table id="games">
+		<thead>
+			<tr><th>Titel</th><th>Genre</th><th>Årstal</th></tr>
+		</thead>
+		<tbody id="games_tbody">
+			<tr class="horror"><td>Outlast</td><td>Horror</td><td>2013</td></tr>
+			<tr class="rpg"><td>Dragon Age: Inquisition</td><td>Role-playing Game</td><td>2014</td></tr>
+			<tr class="rpg"><td>Skyrim</td><td>Role-playing Game</td><td>2011</td></tr>
+			<tr class="horror"><td>Amnesia: The Dark Descent</td><td>Horror</td><td>2010</td></tr>
+			<tr class="simulator"><td>Scania Truck Driving Simulator</td><td>Simulator</td><td>2012</td></tr>
+			<tr class="horror"><td>Five Nights at Freddy’s</td><td>Horror</td><td>2014</td></tr>
+			<tr class="simulator"><td>Sims 4</td><td>Simulator</td><td>2014</td></tr>
+			<tr class="rts" id="last"><td>Warcraft III: Reign of Chaos</td><td>Real-time Strategy</td><td>2002</td></tr>
+		</tbody>
+	</table>
+	
+	<a href="" id="delete_game" class="btn">Delete Game</a>
+	
+	<div class="game-of-the-moment">
+		<h2>Game of the <em>Moment</em></h2>
+		<p>
+			<span id="moment_title">test</span>
+			<span id="moment_genre">test</span>
+			<span id="moment_year">test</span>
+		</p>
+	</div>
+</div>
+
+
+	
+	
+
+
+	
+<script type="text/javascript">
+var opgave1 = document.querySelectorAll("tr.horror");
+
+for (var i = 0; i < opgave1.length; i++) {
+	opgave1[i].className = "highlight"
+};
+
+
+var upperCase = document.querySelectorAll("td");
+
+for (var i = 0; i < upperCase.length; i+=3) {
+	upperCase[i].style.textTransform = "upperCase";
+}
+
+/*var countSpil = 0;
+var dataSpil = document.getElementsByTagName("td");
+for (var i = 0; i < dataSpil.length; i++) {
+	if (dataSpil[i].innerHTML == 2014) {
+		countSpil++;
+	}
+}
+	console.log(countSpil);*/
+	
+	
+	  $(document).ready(function(){
+
+		    var antal = {};
+
+		    $('tbody#games_tbody td:last-child').each(function(){
+
+		        var number = 2014
+
+		        if (number in antal) { return; }
+
+		        var count = 0;   
+		        $('tbody#games_tbody td:contains('+number+')').each(function(){
+		            if ($(this).html() == number) { count++ }
+		        });
+		        antal[number] = count;                
+		    });
+		    for(var number in antal){
+		        var count = antal[number];
+		        $('.resultat').append('Games released in ' + number + ': ' + count + '<br>');  
+		    }             
+		});   
+		       $( "<div/>", {
+		  "class": "resultat",
+		})
+		  .appendTo( "#container" ); 
+		  
+/*var printOut = document.createElement("p");
+var newNode = document.createTextNode("Games released in 2014: " + countGames);
+printUd.appendChild(newNode);
+var newElement = document.getElementById("container");
+newElement.appendChild(printOut);*/
+
+	function spil(title, genre, year) {
+		this.title = title;
+		this.genre = genre;
+		this.year = year;
+		
+		var table = document.getElementById("games");
+		var row = table.insertRow(-1);
+		var cell1 = row.insertCell(-1);
+		var cell2 = row.insertCell(-1);
+		var cell3 = row.insertCell(-1);
+		cell1.innerHTML = title;
+		cell2.innerHTML = genre;
+		cell3.innerHTML = year;
+	}
+	
+ 	
+	
+	var spil = new spil ('Zelda', 'Adventure', '2017');
+		
+	
+	
+    $(document).ready(function(){
+        $('#delete_game').on('click', function (e) {
+          e.preventDefault();
+          $('#games_tbody tr:last').remove();
+          
+      });
+  });
+
+
+
+
+/*
+var mouseOver = document.querySelector("#games_tbody") 
+mouseOver.addEventListener("mouseover", function(){
+	var activeRow = document.querySelector("#games_tbody tr:hover")
+	console.log(activeRow.cells[0].innerHTML);
+	console.log(activeRow.cells[1].innerHTML);
+	console.log(activeRow.cells[2].innerHTML);
+	
+	
+	var cell1 = 
+	var cell2 = 
+	var cell3 = 
+	
+}, false)*/
+/*
+$("#games_tbody tr").mouseover (function)(e){
+	$('moment_title').html(e.target.parentNode.childNodes[0].textContent)
+	$('moment_genre').html(e.target.parentNode.childNodes[1].textContent)
+	$('moment_year').html(e.target.parentNode.childNodes[2].textContent)
+};*/
+
+$("#games_tbody tr").on("mouseover", function(evt) {
+	$('#moment_title').html(evt.target.parentNode.childNodes[0].textContent)
+	$('#moment_genre').html(evt.target.parentNode.childNodes[1].textContent)
+	$('#moment_year').html(evt.target.parentNode.childNodes[2].textContent)
+	});
+
+
+	
+	
+	</script>
+</body>
+</html>
