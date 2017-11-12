@@ -1,0 +1,37 @@
+//Opgave 1
+var students = 21; 
+//Det er et number. Henviser til antallet der dækker variable
+
+var book = '1';
+//String, set som tekst
+
+var grade = 0.4445;
+//Number igen
+
+var candy = 'Haribo';
+//String, tekst igen
+
+var people = ['Anders', 'Mette', 'Hans']
+//Et array med strings
+
+//Opgave 2.
+var x = 20 ; 
+var y = 10 ;
+var z = 5 ;
+var math = x+y*z ;
+total = x+y*z
+console.log(total);
+
+//Opgave 3
+var numbers;
+numbers = [3, 10, 20, 4, 21];
+var res = numbers[1]+numbers[3]+numbers[4];
+console.log(res); //Logger 35
+
+//Opgave 4
+var ord = ["med", "vi", "så", "ikke", "javascript", "har", "sjovt", "det"] ; 
+var string = ord[1]+ " "+ord[5]+" "+ord[7]+" "+ord[6]+" "+ord[0]+" "+ord[4] ;
+console.log(string); 
+//Logger "Vi har det sjovt med javascript
+
+//Opgave 5
