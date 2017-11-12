@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title</title>
+<style type="text/css">
+  
+  
+.container {
+	max-width: 800px;
+	padding: 20px;
+}
+
+h2, h1 {
+	border-bottom: 3px solid;
+	margin-bottom: 30px;
+}  
+  
+article {
+	border-bottom: 3px dashed #ddd;
+	padding-bottom: 20px;
+}
+
+article:last-child {
+	border-bottom: none;
+  text-align : center;
+}
+
+
+p.byline {
+	color: #999;
+	padding-top: 0px;
+	padding-bottom: 0px;
+  float : left ;
+}
+  
+  
+  img {
+    
+    margin-left : 20px;
+    margin-bottom : 20px
+  }
+
+
+</style>
+  </head>
+
+<body>
+  
+  
+  <div class="container">
+	<h1>Top Stories From Around the World</h1>
+
+  <div id = "articles">
+     
+    </div> 
+  
+    
+
+  
+
+          
+ <script>         
+$.getJSON('https://api.nytimes.com/svc/topstories/v1/world.json', {'api-key': "2cb941103998461990415c7e7fafb8c7"},
+		function (data){
+	var results = data.results; 
+	for (var i = 0; i < results.length; i++) {
+		var article = results[i];
+		var url = article.url;
+		var byline = article.byline;
+		var abstract = article.abstract;
+		var title = article.title;
+    
+    
+    
+    if (article.multimedia != ""){
+      var multimedia = article.multimedia[3].url;
+       var champ1 = $(//vi lukker h2 senere i linjen
+                        '<article>' +
+                        '<h2>' + title + '<small class=byline>' + byline + '</small></h2>' +
+                        '<p>' + abstract + '</p>' + 
+                        '<img src=' + multimedia + '>' +
+                        '<a href=' + url +'> View full article</a>' +  
+                        '</article>');
+         $('#articles').append(champ1)
+         } else {
+          var champ = $(
+                       '<article>' +
+                        '<h2>' + title + '</h3>'
+                        '<p>' + byline + '</p>' +
+                        '<p>' + abstract + '</p>' +
+                        '<a href=' + multimedia + '>' +
+                        '<a href=' + url + '> View full article</a>' +
+                        '</article>');
+         $('#articles').append(champ)
+         }
+    }
+	});
+ 
+          </script>
+  		</div>
+          </body>
+
+</html>
